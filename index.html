@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Range Clicker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container-fluid">
+      <div class="row text-center">
+        <div class="col-12">
+          <h1>Shots: <span id="shots"></span></h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container-fluid">
+      <div class="row text-center">
+        <div class="col-12">
+          <img src="target.png" alt="" onclick="shoot()">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary m-1" onclick="buyFireRate()">Fire Rate</button> <span id="firerate"> </span>
+    <br>
+    <button class="btn btn-primary m-1" onclick="buyBumpStock()">Bump Stock</button> <span id="bumpstock"></span>
+    <br>
+    <button class="btn btn-primary m-1" onclick="buyAutoSear()">Auto Sear</button> <span id="autosear"></span>
+    <br>
+    <button class="btn btn-primary m-1" onclick="buyMG()">Machine Gun</button> <span id="mg"></span>
+  </main>
+
+  <footer>
+
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
