@@ -23,7 +23,7 @@ let clickUpgrades = {
 
 let automaticUpgrades = {
   machineGun: {
-    price: 350,
+    price: 500,
     quantity: 0,
     multiplier: 20
   }
@@ -64,24 +64,32 @@ function buyAutoSear() {
   }
 }
 
-
 function buyMG() {
   if (gameData.shots >= automaticUpgrades.machineGun.price) {
     gameData.shots -= automaticUpgrades.machineGun.price
     automaticUpgrades.machineGun.quantity++
-    gameData.shotsPerClick += automaticUpgrades.machineGun.multiplier
+    automaticUpgrades.machineGun.multiplier *= 2
     automaticUpgrades.machineGun.price *= 3
     update();
   }
 }
 
+function collectAutoUpgrades() {
+  if (automaticUpgrades.machineGun.quantity >= 1) {
+    gameData.shots += automaticUpgrades.machineGun.multiplier
+  }
+  update();
+}
+setInterval(() => {
+  collectAutoUpgrades();
+}, 3000);
 
 function update() {
   document.getElementById("shots").innerText = gameData.shots.toString();
   document.getElementById("firerate").innerHTML = "(Level " + clickUpgrades.fireRate.quantity + ") Cost: " + clickUpgrades.fireRate.price + " Shots " + "- Increases Shots Per Click By: " + clickUpgrades.fireRate.multiplier
   document.getElementById("bumpstock").innerHTML = "(Level " + clickUpgrades.bumpStock.quantity + ") Cost: " + clickUpgrades.bumpStock.price + " Shots " + "- Increases Shots Per Click By: " + clickUpgrades.bumpStock.multiplier
   document.getElementById("autosear").innerHTML = "(Level " + clickUpgrades.autoSear.quantity + ") Cost: " + clickUpgrades.autoSear.price + " Shots " + "- Increases Shots Per Click By: " + clickUpgrades.autoSear.multiplier
-  document.getElementById("mg").innerHTML = "(Level " + automaticUpgrades.machineGun.quantity + ") Cost: " + automaticUpgrades.machineGun.price + " Shots " + "- Increases Shots Per Click By: " + automaticUpgrades.machineGun.multiplier
+  document.getElementById("mg").innerHTML = "(Level " + automaticUpgrades.machineGun.quantity + ") Cost: " + automaticUpgrades.machineGun.price + " Shots " + "- Increases Shots By: " + automaticUpgrades.machineGun.multiplier + " Per Click"
 }
 
 update();
